@@ -18,7 +18,7 @@ jobs:
         curl -u user:${{ secrets.AZURE_DEVOPS_PAT }} \
              -X POST \
              -H "Content-Type: application/json" \
-             --data '{"definition": {"id": 21}}' \
-             https://dev.azure.com/drootconsulting/Upload/_apis/build/builds?api-version=6.0
+             --data '{"definition": {"id": 3}}' \
+             https://dev.azure.com/ayushvinchurkar0480/testing/_apis/build/builds?api-version=6.0
       env:
         AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
