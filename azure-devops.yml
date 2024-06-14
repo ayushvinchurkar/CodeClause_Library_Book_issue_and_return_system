@@ -1,0 +1,24 @@
+name: Azure DevOps Integration
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Trigger Azure DevOps Pipeline
+      run: |
+        curl -u user:${{ secrets.AZURE_DEVOPS_PAT }} \
+             -X POST \
+             -H "Content-Type: application/json" \
+             --data '{"definition": {"id": 21}}' \
+             https://dev.azure.com/drootconsulting/Upload/_apis/build/builds?api-version=6.0
+      env:
+        AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
